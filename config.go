@@ -10,8 +10,8 @@ import (
 var Yaml = getYaml()
 var goEnv = getGoEnv()
 
-func Env(key string) (string, error) {
-	return Yaml[goEnv].(map[interface{}]interface{})[key].(string), nil
+func Env(key string) string {
+	return Yaml[goEnv].(map[interface{}]interface{})[key].(string)
 }
 
 func getYaml() map[interface{}]interface{} {
