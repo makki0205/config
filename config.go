@@ -11,6 +11,9 @@ var Yaml = getYaml()
 var goEnv = getGoEnv()
 
 func Env(key string) string {
+	if Yaml[goEnv].(map[interface{}]interface{})[key] == nil {
+		return ""
+	}
 	return Yaml[goEnv].(map[interface{}]interface{})[key].(string)
 }
 
