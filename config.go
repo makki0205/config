@@ -4,17 +4,24 @@ import (
 	"io/ioutil"
 	"os"
 
+	"fmt"
+
 	"gopkg.in/yaml.v2"
 )
 
 var Yaml = getYaml()
-var goEnv = getGoEnv()
+var GoEnv = getGoEnv()
+var Panic = true
 
 func Env(key string) string {
-	if Yaml[goEnv].(map[interface{}]interface{})[key] == nil {
-		return ""
+
+	if _, ok := Yaml[GoEnv].(map[interface{}]interface{})[key]; ok {
+		return Yaml[GoEnv].(map[interface{}]interface{})[key].(string)
 	}
-	return Yaml[goEnv].(map[interface{}]interface{})[key].(string)
+	if Panic {
+		panic(fmt.Sprintf("%s: [%s] is notfund", GoEnv, key))
+	}
+	return ""
 }
 
 func getYaml() map[interface{}]interface{} {

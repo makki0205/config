@@ -1,0 +1,13 @@
+development:
+  dialect: mysql
+  datasource: root:password@tcp(127.0.0.1:3306)/chocot_development?parseTime=true&collation=utf8_general_ci&interpolateParams=true&loc=Local
+  dir: migration
+  BASEURL: https://goapi.chocot.me
+  S3BASE: https://s3-ap-northeast-1.amazonaws.com/chocot-server-production/uploads
+
+staging:
+  dialect: mysql
+  datasource: cosys:i9zqw3au@tcp(chocot-staging-aurora-0.cw5vhorrmrjb.ap-northeast-1.rds.amazonaws.com:3306)/chocot_staging?parseTime=true&collation=utf8_general_ci&interpolateParams=true&loc=Local
+  dir: migration
+  BASEURL: https://staging.chocot.me
+  S3BASE:
